@@ -1,0 +1,52 @@
+@use "../variables/colores" as c;
+@use "../variables/sizes" as s;
+@use "../components/font-styles" as fs;
+@use "../variables/breakpoints" as bp;
+
+.receta-page {
+  background-color: c.$principal;
+  color: c.$text;
+  padding: s.space(s8) s.space(s7);
+
+  //BREAKPOINT
+  @include bp.md {
+    padding: s.space(s7) s.space(s5);
+  }
+
+  @include bp.xs {
+    padding: s.space(s7) s.space(s4);
+  }
+
+  .receta-img {
+    max-width: 500px;
+    margin: s.space(s5) 0;
+
+    //BREAKPOINT
+    @include bp.sm {
+      width: 100%;
+    }
+  }
+
+  .receta-text {
+    margin-top: s.space(s4);
+  }
+
+  .parrafos {
+    max-width: 800px;
+    margin: s.space(s5) 0;
+    padding: s.space(s5);
+    border: 1px solid c.$secundario;
+    border-radius: 25px;
+    line-height: 1.5rem;
+
+    //BREAKPOINT
+    @include bp.xs {
+      margin: s.space(s4) 0;
+      padding: s.space(s4);
+    }
+  }
+
+  .titulo2 {
+    @include fs.medTitle;
+  }
+}

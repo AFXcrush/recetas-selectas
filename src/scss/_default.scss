@@ -1,0 +1,33 @@
+@use "./variables/font" as f;
+@use "./variables/sizes" as s;
+@use "./variables/colores" as c;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: f.$principal;
+  text-decoration: none;
+
+  &::-webkit-scrollbar-track {
+    background-color: c.$principal;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: c.$principal;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: c.$secundario;
+  }
+}
+
+p {
+  margin: s.space(s3) 0;
+}
+
+.pointer {
+  cursor: pointer;
+}

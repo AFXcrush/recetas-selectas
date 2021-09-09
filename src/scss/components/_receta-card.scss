@@ -1,0 +1,81 @@
+@use "../variables/colores" as c;
+@use "../variables/sizes" as s;
+@use "../variables/font" as f;
+@use "../variables/breakpoints" as bp;
+
+.receta-card {
+  width: 500px;
+  height: 150px;
+  display: flex;
+  border: 2px solid c.$acento;
+  border-radius: s.size(big);
+  overflow: hidden;
+  margin-bottom: s.space(s5);
+
+  //BREAKPOINT
+  @include bp.xl {
+    width: 400px;
+  }
+
+  @include bp.lg {
+    width: 500px;
+  }
+
+  @include bp.md {
+    width: 350px;
+  }
+
+  @include bp.sm {
+    width: 300px;
+    height: 100px;
+  }
+
+  .card-img-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include bp.sm {
+      width: 100px;
+      height: 100px;
+    }
+
+    .card-img {
+      display: block;
+      max-height: 150px;
+
+      @include bp.sm {
+        max-height: 100px;
+      }
+    }
+  }
+
+  .card-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+
+    .card-category {
+      color: c.$secundario;
+      margin-bottom: s.space(s2);
+    }
+
+    .card-title {
+      color: c.$text;
+      font-size: s.size(medium);
+      font-weight: f.weight(bold);
+
+      @include bp.sm {
+        font-size: s.size(normal);
+      }
+
+      &:hover {
+        color: c.$secundario;
+      }
+    }
+  }
+}

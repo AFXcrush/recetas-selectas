@@ -1,0 +1,14 @@
+//FONT FAMILY
+$principal: "Lato", sans-serif;
+$acento: "Berkshire Swash", cursive;
+
+//FONT WEIGHT
+$weight: (
+  "normal": 300,
+  "medium": 400,
+  "bold": 900,
+);
+
+@function weight($w) {
+  @return map-get($weight, $w);
+}

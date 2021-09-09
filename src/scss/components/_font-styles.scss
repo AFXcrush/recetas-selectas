@@ -1,0 +1,16 @@
+@use "../variables/colores" as c;
+@use "../variables/font" as f;
+@use "../variables/sizes" as s;
+
+@mixin bigTitle {
+  font-family: f.$acento;
+  color: c.$secundario;
+  margin-bottom: s.space(s4);
+  font-size: s.size(bigger);
+}
+
+@mixin medTitle {
+  font-family: f.$principal;
+  color: c.$text;
+  font-size: s.size(big);
+}

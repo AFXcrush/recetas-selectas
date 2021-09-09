@@ -1,0 +1,6 @@
+@forward "default";
+@forward "./components/header";
+@forward "inicio";
+@forward "./components/receta-card";
+@forward "./components/receta";
+/*# sourceMappingURL=app.css.map */

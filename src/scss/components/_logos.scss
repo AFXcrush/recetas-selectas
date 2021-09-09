@@ -1,0 +1,17 @@
+//Usas logoHeader con sus 2 argumentos para especificar tamaño y color
+
+@mixin logoHeader($width, $color) {
+  width: $width;
+  display: block;
+  fill: $color;
+
+  &:hover {
+    fill: rgba($color: $color, $alpha: 0.8);
+  }
+}
+
+@mixin logoHeaderIcon($height, $color) {
+  height: $height;
+  display: none;
+  fill: $color;
+}

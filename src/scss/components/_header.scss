@@ -1,0 +1,344 @@
+@use "../variables/colores" as c;
+@use "../variables/sizes" as s;
+@use "../components/logos" as l;
+@use "../variables/font" as f;
+@use "../variables/breakpoints" as bp;
+
+.header {
+  width: 100%;
+  height: 150px;
+  padding: s.space(s6) s.space(s7);
+  background-color: c.$acento;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+
+  //BREAKPOINT
+  @include bp.lg {
+    padding: s.space(s5);
+  }
+
+  @include bp.md {
+    height: 100px;
+  }
+
+  &:after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: c.$secundario;
+
+    //BREAKPOINT
+    @include bp.md {
+      height: 2px;
+    }
+  }
+
+  .logo-header {
+    @include l.logoHeader(400px, c.$principal);
+
+    //BREAKPOINT
+    @include bp.xl {
+      @include l.logoHeader(350px, c.$principal);
+    }
+
+    @include bp.lg {
+      @include l.logoHeader(300px, c.$principal);
+    }
+
+    @include bp.md {
+      display: none;
+    }
+  }
+
+  .logo-header-icon {
+    @include l.logoHeaderIcon(60px, c.$principal);
+
+    //BREAKPOINT
+    @include bp.md {
+      display: block;
+    }
+
+    @include bp.sm {
+      @include l.logoHeaderIcon(40px, c.$principal);
+      display: block;
+    }
+  }
+
+  .header-link {
+    font-size: s.size(normal);
+    font-weight: f.weight(bold);
+    color: c.$principal;
+    transition: 0.3s;
+
+    //BREAKPOINT
+    @include bp.xl {
+      display: none;
+    }
+
+    &:hover {
+      font-size: s.size(medium);
+    }
+  }
+}
+
+//SHRINK AT SCROLL STYLE
+.header-scroll {
+  @extend .header;
+  height: 80px;
+  padding: s.space(s4) s.space(s7);
+
+  //BREAKPOINT
+  @include bp.xl {
+    padding: s.space(s5);
+  }
+
+  @include bp.md {
+    height: 70px;
+  }
+
+  .logo-header {
+    @include l.logoHeader(300px, c.$principal);
+
+    //BREAKPOINT
+    @include bp.md {
+      display: none;
+    }
+  }
+
+  .logo-header-icon {
+    //BREAKPOINT
+    @include bp.md {
+      @include l.logoHeaderIcon(50px, c.$principal);
+      display: block;
+    }
+
+    @include bp.sm {
+      @include l.logoHeaderIcon(40px, c.$principal);
+      display: block;
+    }
+  }
+}
+
+//CATEGORIES LIST DROPDOWN
+@mixin styleShare {
+  width: 200px;
+  padding: s.space(s2) s.space(s3);
+  font-weight: f.weight(bold);
+  font-size: s.size(normal);
+  outline: none;
+  color: c.$principal;
+  background-color: c.$acento;
+  transition: 0.3s;
+
+  //BREAKPOINT
+  @include bp.sm {
+    width: 160px;
+    padding: s.space(s2);
+  }
+}
+
+.categories-container {
+  width: 200px;
+  position: relative;
+  z-index: 1;
+
+  .categories-btn {
+    cursor: pointer;
+    border: 2px solid c.$principal;
+    border-radius: 25px;
+    @include styleShare;
+
+    &:hover {
+      font-size: s.size(medium);
+
+      //BREAKPOINT
+      @include bp.md {
+        font-size: s.size(normal);
+      }
+    }
+  }
+
+  .categories-list {
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
+  }
+
+  .categories-link {
+    @include styleShare;
+    background-color: c.$text;
+    border: 2px solid c.$principal;
+    border-radius: 25px;
+    cursor: pointer;
+
+    &:hover {
+      color: c.$secundario;
+      background-color: c.$principal;
+      border: 2px solid c.$secundario;
+      transform: scale(1.1);
+    }
+  }
+
+  .active {
+    transform: scaleY(1);
+  }
+}
+
+//FILTER BAR
+.search {
+  max-width: 250px;
+  z-index: 1;
+  position: relative;
+
+  //BREAKPOINT
+  @include bp.sm {
+    display: none;
+  }
+
+  .search-input {
+    width: 100%;
+    position: relative;
+
+    input {
+      color: c.$principal;
+      background-color: c.$acento;
+      padding: s.space(s2) s.space(s3);
+      font-weight: f.weight(normal);
+      font-size: s.size(normal);
+      border: 2px solid c.$principal;
+      border-radius: 25px;
+      outline: none;
+    }
+    ::placeholder {
+      color: c.$principal;
+    }
+
+    .search-icon {
+      max-height: s.space(s3);
+      fill: c.$principal;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      right: s.space(s2);
+      top: 50%;
+    }
+  }
+
+  .search-result {
+    display: block;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    overflow-y: auto;
+    position: absolute;
+    transform-origin: top;
+    margin-top: s.space(s1);
+
+    &::-webkit-scrollbar-track {
+      background-color: c.$text;
+    }
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      background-color: c.$text;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: c.$principal;
+    }
+
+    // &::-webkit-scrollbar {
+    //   display: none;
+    // }
+
+    .search-link-list {
+      height: s.space(s6);
+      display: flex;
+      align-items: center;
+      background-color: c.$text;
+
+      .search-link {
+        text-decoration: none;
+        color: c.$principal;
+        margin-left: s.space(s2);
+
+        &:hover {
+          color: c.$acento;
+        }
+      }
+    }
+  }
+}
+
+//FILTER BTN SM-BREAKPOINT
+.search-icon-sm {
+  height: s.space(s4);
+  fill: c.$principal;
+  display: none;
+  cursor: pointer;
+
+  //BREAKPOINT
+  @include bp.sm {
+    display: block;
+  }
+}
+
+.search-sm {
+  visibility: hidden;
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  //BREAKPOINT
+  @include bp.sm {
+    background-color: rgba($color: c.$principal, $alpha: 0.9);
+    z-index: 10;
+    padding: s.space(s5);
+    display: flex;
+    justify-content: center;
+
+    .search {
+      display: block;
+      width: 90%;
+      max-width: unset;
+
+      .search-input {
+        input {
+          width: 100%;
+        }
+        ::placeholder {
+          color: c.$principal;
+        }
+      }
+
+      .search-result {
+        height: 400px;
+      }
+    }
+  }
+}
+
+.close-icon-sm {
+  height: 20px;
+  fill: c.$text;
+  margin: s.space(s2) auto;
+  cursor: pointer;
+}
+
+.search-sm-visible {
+  visibility: visible;
+  top: 0;
+  transition: 0.3s;
+
+  @include bp.smmin {
+    visibility: hidden;
+  }
+}

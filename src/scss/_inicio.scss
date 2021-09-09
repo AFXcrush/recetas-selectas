@@ -1,0 +1,49 @@
+@use "./variables/colores" as c;
+@use "./components/font-styles" as fs;
+@use "./components/logos" as l;
+@use "./variables/sizes" as s;
+@use "./components/background" as bg;
+@use "./variables/breakpoints" as bp;
+
+.inicio {
+  @include bg.imgBackgroundWide;
+
+  .inicio-solid-bg {
+    @include bg.solidBackgroundPrincipal;
+    padding: s.space(s6);
+
+    //BREAKPOINTS
+    @include bp.md {
+      padding: s.space(s4) 0;
+    }
+
+    .inicio-body {
+      margin-top: s.space(s8);
+      padding: s.space(s6);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      //BREAKPOINTS
+      @include bp.xxl {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @include bp.lg {
+        grid-template-columns: 1fr;
+      }
+
+      @include bp.md {
+        margin-top: s.space(s7);
+        padding: s.space(s4);
+      }
+
+      .cards-container {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.titulo {
+  @include fs.bigTitle;
+}

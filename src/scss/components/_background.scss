@@ -1,0 +1,16 @@
+@use "../variables/colores" as c;
+
+@mixin imgBackgroundWide {
+  background: url(../../assets/img/bg1.jpg);
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+@mixin solidBackgroundPrincipal {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba($color: c.$principal, $alpha: 0.9);
+}
